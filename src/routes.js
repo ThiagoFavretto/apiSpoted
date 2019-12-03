@@ -11,7 +11,10 @@ const upload = multer(uploadConfig);
 //post
 routes.get("/posts", PostController.index);
 
+routes.get("/posts/:id/commetn", PostController.findPost);
+
 routes.post("/posts", upload.single("image"), PostController.store);
+
 routes.post("/posts/:id/like", LikeController.store);
 
 //comment

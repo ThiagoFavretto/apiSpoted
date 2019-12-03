@@ -10,9 +10,14 @@ module.exports = {
     return res.json(post);
   },
 
+  async findPost(req, res) {
+    console.log(req.params.id);
+    const post = await Post.findById(req.params.id);
+    return res.json(post);
+  },
+
   async store(req, res) {
-    console.log(req.body);
-    const { user, place, description, hashtags } = req.body;
+    const { user, location, description } = req.body;
     const { filename: image } = req.file;
 
     await sharp(req.file.path)
@@ -24,9 +29,8 @@ module.exports = {
 
     const post = await Post.create({
       user,
-      place,
+      location,
       description,
-      hashtags,
       image
     });
 
