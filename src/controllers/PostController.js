@@ -17,6 +17,7 @@ module.exports = {
   },
 
   async store(req, res) {
+    console.log(req.body);
     const { user, location, description } = req.body;
     const { filename: image } = req.file;
 

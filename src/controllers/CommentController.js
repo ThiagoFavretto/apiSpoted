@@ -11,7 +11,6 @@ module.exports = {
 
   async store(req, res) {
     const { comment, post } = req.body;
-
     const commentSaved = await Comment.create({
       comment,
       post
